@@ -3,14 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Models\Booking;
+use App\Models\Notification;
+use App\Models\MeetingAttendee;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +23,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'roles',
     ];
 
     /**
@@ -34,15 +40,45 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string,string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password'          => 'hashed',
+        'roles'             => 'string',
+    ];
+
+    /**
+     * User → Bookings (1:N)
+     */
+    public function bookings()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Booking::class);
+    }
+
+    /**
+     * User → Notifications (1:N)
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * User → MeetingAttendees (1:N)
+     */
+    public function meetingAttendees()
+    {
+        return $this->hasMany(MeetingAttendee::class);
+    }
+
+    /**
+     * Check if the user has the 'admin' role.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->roles === 'admin';
     }
 }
