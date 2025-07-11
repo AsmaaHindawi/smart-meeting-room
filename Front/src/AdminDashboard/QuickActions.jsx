@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaCalendarAlt, FaVideo, FaFileAlt } from "react-icons/fa";
-import ScheduleMeetingModal from "./ScheduleMeetingModal";
+import ScheduleMeetingForm from "./ScheduleMeetingForm";
 
 const QuickActions = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +34,7 @@ const QuickActions = () => {
       </a>
 
 
-      {isModalOpen && <ScheduleMeetingModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <ScheduleMeetingForm onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };

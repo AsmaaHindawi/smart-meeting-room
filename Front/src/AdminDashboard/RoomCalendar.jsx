@@ -5,12 +5,13 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaUsers, FaPhone } from "react-icons/fa";
 
 const RoomCalendar = () => {
-  const [events] = useState([
+  const fullEvents = [
     {
       title: "Team Sync",
       start: new Date(2025, 6, 7, 10, 0),
       end: new Date(2025, 6, 7, 11, 0),
       room: "Room A",
+      organizer: "Sarah",
       icon: <FaUsers />,
     },
     {
@@ -18,26 +19,45 @@ const RoomCalendar = () => {
       start: new Date(2025, 6, 8, 15, 0),
       end: new Date(2025, 6, 8, 16, 0),
       room: "Room C",
+      organizer: "Mark",
       icon: <FaPhone />,
     },
-  ]);
+    {
+      title: "Budget Meeting",
+      start: new Date(2025, 6, 9, 14, 0),
+      end: new Date(2025, 6, 9, 15, 0),
+      room: "Room A",
+      organizer: "Sarah",
+      icon: <FaUsers />,
+    },
+  ];
 
+  const [roomFilter, setRoomFilter] = useState("All");
+  const [organizerFilter, setOrganizerFilter] = useState("All");
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(Views.MONTH);
 
+  const filteredEvents = fullEvents.filter((event) => {
+    const roomMatch = roomFilter === "All" || event.room === roomFilter;
+    const organizerMatch = organizerFilter === "All" || event.organizer === organizerFilter;
+    return roomMatch && organizerMatch;
+  });
+
+  const uniqueRooms = [...new Set(fullEvents.map((e) => e.room))];
+  const uniqueOrganizers = [...new Set(fullEvents.map((e) => e.organizer))];
+
   const handleNavigate = (action) => {
     const newDate = new Date(date);
-    if (action === "TODAY") {
-      setDate(new Date());
-    } else if (action === "NEXT") {
+    if (action === "TODAY") setDate(new Date());
+    else if (action === "NEXT") {
       if (view === Views.MONTH) newDate.setMonth(newDate.getMonth() + 1);
       else if (view === Views.WEEK) newDate.setDate(newDate.getDate() + 7);
-      else if (view === Views.DAY) newDate.setDate(newDate.getDate() + 1);
+      else newDate.setDate(newDate.getDate() + 1);
       setDate(newDate);
     } else if (action === "BACK") {
       if (view === Views.MONTH) newDate.setMonth(newDate.getMonth() - 1);
       else if (view === Views.WEEK) newDate.setDate(newDate.getDate() - 7);
-      else if (view === Views.DAY) newDate.setDate(newDate.getDate() - 1);
+      else newDate.setDate(newDate.getDate() - 1);
       setDate(newDate);
     }
   };
@@ -45,17 +65,43 @@ const RoomCalendar = () => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-6xl mx-auto mt-6">
       <div className="mb-6">
-        <h2 className="text-3xl font-bold text-indigo-700"> Room Availability</h2>
+        <h2 className="text-3xl font-bold text-[#7d65fb]">Room Availability</h2>
         <p className="text-gray-500 mt-1 text-sm">Switch between month, week, or day views</p>
       </div>
 
-      {/* Custom Toolbar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        {/* Navigation Buttons */}
+      <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
+        <div className="flex gap-4 items-center">
+          <select
+            value={roomFilter}
+            onChange={(e) => setRoomFilter(e.target.value)}
+            className="border rounded-md px-4 py-2"
+          >
+            <option value="All">All Rooms</option>
+            {uniqueRooms.map((room) => (
+              <option key={room} value={room}>
+                {room}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={organizerFilter}
+            onChange={(e) => setOrganizerFilter(e.target.value)}
+            className="border rounded-md px-4 py-2"
+          >
+            <option value="All">All Organizers</option>
+            {uniqueOrganizers.map((org) => (
+              <option key={org} value={org}>
+                {org}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className="flex items-center gap-2">
           <button
             onClick={() => handleNavigate("TODAY")}
-            className="px-4 py-1.5 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition"
+            className="px-4 py-1.5 rounded-md bg-[#7d65fb] text-white font-medium hover:bg-[#6b59e0] transition"
           >
             Today
           </button>
@@ -71,34 +117,31 @@ const RoomCalendar = () => {
           >
             Next
           </button>
-          <h3 className="ml-4 text-lg font-semibold text-gray-700">
-            {date.toLocaleString("default", { month: "long", year: "numeric" })}
-          </h3>
-        </div>
-
-        {/* View Switch Buttons */}
-        <div className="flex items-center gap-2">
-          {["month", "week", "day"].map((v) => (
-            <button
-              key={v}
-              onClick={() => setView(v)}
-              className={`px-4 py-1.5 rounded-md font-medium transition ${
-                view === v
-                  ? "bg-indigo-100 text-indigo-700"
-                  : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              {v.charAt(0).toUpperCase() + v.slice(1)}
-            </button>
-          ))}
         </div>
       </div>
 
-      {/* Calendar Component */}
+      {/* View Switch */}
+      <div className="flex gap-2 mb-4">
+        {["month", "week", "day"].map((v) => (
+          <button
+            key={v}
+            onClick={() => setView(v)}
+            className={`px-4 py-1.5 rounded-md font-medium transition ${
+              view === v
+                ? "bg-[#e4e0fe] text-[#7d65fb]"
+                : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
+            }`}
+          >
+            {v.charAt(0).toUpperCase() + v.slice(1)}
+          </button>
+        ))}
+      </div>
+
+      {/* Calendar */}
       <div className="border border-gray-200 rounded-xl overflow-hidden">
         <Calendar
           localizer={localizer}
-          events={events}
+          events={filteredEvents}
           startAccessor="start"
           endAccessor="end"
           date={date}
@@ -111,7 +154,7 @@ const RoomCalendar = () => {
           style={{ height: "70vh" }}
           eventPropGetter={() => ({
             className:
-              "bg-indigo-500 text-white text-sm px-3 py-1 rounded-md shadow-sm hover:bg-indigo-600 transition",
+              "bg-[#7d65fb] text-white text-sm px-3 py-1 rounded-md shadow-sm hover:bg-[#6b59e0] transition",
           })}
           components={{
             event: ({ event }) => (
@@ -121,7 +164,7 @@ const RoomCalendar = () => {
               </div>
             ),
           }}
-          toolbar={false} // Disable default toolbar
+          toolbar={false}
         />
       </div>
     </div>

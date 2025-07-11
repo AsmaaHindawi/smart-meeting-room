@@ -8,7 +8,7 @@ import {
   FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
-
+import AdminSettings from "./AdminSetting";
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,18 +18,17 @@ const Sidebar = () => {
     { name: "Dashboard", icon: <FaTachometerAlt />, path: "/admin/dashboard" },
     { name: "Manage Rooms", icon: <FaDoorOpen />, path: "/admin/manageRooms" },
     { name: "Bookings", icon: <FaCalendarAlt />, path: "/admin/bookMeeting" },
-    { name: "Minutes", icon: <FaFileAlt />, path: "/admin/minutesPage" },
+    { name: "Minutes", icon: <FaFileAlt />, path: "/admin/minutes" },
+    { name: "Setting", icon: <FaFileAlt />, path: "/admin/settingsPage" },
   ];
 
   const handleLogout = () => {
-    // Optional: clear token if you store one
-    // localStorage.removeItem("token");
     navigate("/");
   };
 
   return (
     <>
-      <aside className="w-64 h-screen bg-white border-r shadow-sm hidden md:flex flex-col fixed">
+      <aside className="w-64 h-screen   border-r shadow-sm hidden md:flex flex-col fixed">
         <div className="h-20 flex items-center justify-center border-b">
           <img
             src="/Images/logoMeetSM.png"
@@ -38,7 +37,7 @@ const Sidebar = () => {
           />
         </div>
 
-        <nav className="flex-1 px-4 py-6 space-y-2">
+        <nav className="flex-1 px-4 py-6 space-y-2 ">
           {navItems.map((item) => (
             <Link
               key={item.name}

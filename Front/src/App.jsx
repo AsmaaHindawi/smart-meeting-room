@@ -4,22 +4,26 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Component/Login";
 import Home from "./Component/Home";
 import Layout from "./AdminDashboard/Layout";
+
+//Admin
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import ManageRooms from './AdminDashboard/ManageRooms';
 import BookMeeting from './AdminDashboard/BookMeeting'; 
 import MinutesPage from './AdminDashboard/MinutesPage';
-
+import AdminSettings from "./AdminDashboard/AdminSetting";
+import { MinutesEditor } from "./AdminDashboard/MinutesEditor";
+// Employee
 import EmployeeLayout from "./EmployeeDashboard/EmployeeLayout";
 import EmployeeDashboard from "./EmployeeDashboard/EmployeeDashboard";
 import BookMeetings from "./EmployeeDashboard/BookMeetings";
 import JoinMeeting from "./EmployeeDashboard/JoinMeeting";
 import MinutesReview from "./EmployeeDashboard/MinutesReview";
 
-
+//User
 import UserLayout from "./User/UserLayout";
 import Dashboard from "./User/dashboard";
 import {ActiveMeeting}  from "./User/ActiveMeeting";
-import  {MinutesEditor}  from "./User/MinutesEditor";
+// import  {MinutesEditor}  from "./User/MinutesEditor";
 import  {PastMeetings}  from "./User/PastMeetings";
 import {RoomAvailability}  from "./User/RoomAvailability";
 
@@ -40,6 +44,8 @@ function App() {
           <Route path="/admin/manageRooms" element={<ManageRooms />} />
           <Route path="/admin/bookMeeting" element={<BookMeeting />} />
           <Route path="/admin/minutesPage" element={<MinutesPage />} />
+            <Route path="/admin/settingsPage" element={<AdminSettings />} />
+              <Route path="/admin/minutes" element={<MinutesEditor />} />
         </Route>
 
         {/* Employee Routes */}
@@ -55,7 +61,7 @@ function App() {
           <Route path="/user/dashboard" element={<Dashboard />} />
           <Route path="/user/book" element={<RoomAvailability />} />
           <Route path="/user/join" element={<ActiveMeeting />} />
-          <Route path="/user/minutes" element={<MinutesEditor />} />
+          {/* <Route path="/user/minutes" element={<MinutesEditor />} /> */}
           <Route path="/user/review" element={<PastMeetings />} />
         </Route>
       </Routes>
