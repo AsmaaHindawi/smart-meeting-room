@@ -1,0 +1,14 @@
+
+
+.circleS {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 20px;
+  right: 20px;
+  filter: blur(100px);
+  z-index: 1000;
+  background-color:  white;
+}
