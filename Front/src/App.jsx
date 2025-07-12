@@ -22,9 +22,7 @@ import EmployeeSettings from "./EmployeeDashboard/EmployeeSetting";
 import UserLayout from "./User/UserLayout";
 import Dashboard from "./User/dashboard";
 import {ActiveMeeting}  from "./User/ActiveMeeting";
-// import  {MinutesEditor}  from "./User/MinutesEditor";
-import  {PastMeetings}  from "./User/PastMeetings";
-import {RoomAvailability}  from "./User/RoomAvailability";
+import Minutes from "./User/Minutes";
 
 
 
@@ -42,7 +40,6 @@ function App() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/manageRooms" element={<ManageRooms />} />
           <Route path="/admin/bookMeeting" element={<BookMeeting />} />
-          <Route path="/admin/minutesPage" element={<MinutesPage />} />
             <Route path="/admin/settingsPage" element={<AdminSettings />} />
               <Route path="/admin/minutes" element={<MinutesEditor />} />
         </Route>
@@ -59,10 +56,8 @@ function App() {
         {/* User Routes */}
         <Route element={<UserLayout />}>
           <Route path="/user/dashboard" element={<Dashboard />} />
-          <Route path="/user/book" element={<RoomAvailability />} />
           <Route path="/user/join" element={<ActiveMeeting />} />
-          {/* <Route path="/user/minutes" element={<MinutesEditor />} /> */}
-          <Route path="/user/review" element={<PastMeetings />} />
+          <Route path="/user/minutes" element={<Minutes />} />
         </Route>
       </Routes>
     </Router>

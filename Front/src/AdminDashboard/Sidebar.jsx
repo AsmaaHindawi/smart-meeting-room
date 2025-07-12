@@ -29,13 +29,15 @@ const Sidebar = () => {
   return (
     <>
       <aside className="w-64 h-screen   border-r shadow-sm hidden md:flex flex-col fixed">
-        <div className="h-20 flex items-center justify-center border-b">
-          <img
-            src="/Images/logoMeetSM.png"
-            alt="SmartMeet Logo"
-            className="h-20 max-w-30 mr-8"
-          />
-        </div>
+          <Link to="/">
+  <div className="h-20 flex items-center justify-center border-b cursor-pointer">
+    <img
+      src="/Images/logoMeetSM.png"
+      alt="SmartMeet Logo"
+      className="h-20 max-w-30 mr-8"
+    />
+  </div>
+</Link>
 
         <nav className="flex-1 px-4 py-6 space-y-2 ">
           {navItems.map((item) => (

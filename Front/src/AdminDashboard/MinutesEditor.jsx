@@ -185,7 +185,7 @@ export const MinutesEditor = () => {
               onClick={handleSaveDraft}
               className="bg-[#ff7954] text-white px-5 py-2 rounded-xl hover:bg-[#e26542] transition"
             >
-              Save Draft
+              Save 
             </button>
             <button
               onClick={handleFinalizeAndExport}

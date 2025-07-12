@@ -3,6 +3,8 @@ import  QuickActions  from "./QuickActions";
 import { UpcomingMeetings } from "./UpcomingMeetings";
 import Topbar from "./Topbar";
 import { FaCalendarAlt, FaFileAlt, FaVideo } from "react-icons/fa";
+import RoomCalendar from "./RoomCalendar";
+import NotificationPanel from "./NotificationPanel";
 
 export default function Dashboard() {
   return (
@@ -12,7 +14,6 @@ export default function Dashboard() {
         <QuickActions
         actions={[
           { label: "Schedule Meeting", icon: <FaCalendarAlt />, to: "/user/book" },
-          { label: "Join Meeting", icon: <FaVideo />, to: "/user/join" },
           { label: "View Minutes", icon: <FaFileAlt />, to: "/user/minutes" },
         ]}
       />
@@ -23,6 +24,15 @@ export default function Dashboard() {
           { time: "3:00 PM", title: "Client Call", room: "Room C" },
         ]}
       />
+       <div className="grid md:grid-cols-2 gap-2">
+          <RoomCalendar />
+          <NotificationPanel
+            notifications={[
+              { type: "info", message: "Room C is under maintenance" },
+              { type: "reminder", message: "Meeting with HR at 3 PM" },
+            ]}
+          />
+        </div>
      </main>
     </div>
   );
