@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export default function AdminSettings() {
+export default function EmployeeSettings() {
   const [formData, setFormData] = useState({
-    name: "Admin User",
-    email: "admin@example.com",
+    name: "Employee User",
+    email: "employee@example.com",
     password: "",
     newPassword: "",
     confirmNewPassword: "",
@@ -25,10 +25,9 @@ export default function AdminSettings() {
         className="w-full max-w-7xl bg-white rounded-2xl shadow-xl p-10 space-y-10"
       >
         <h1 className="text-2xl font-bold text-[#2c2e5f] border-b pb-4">
-          Admin Settings
+          Employee Settings
         </h1>
 
-    
         <section className="space-y-6">
           <h2 className="text-lg font-semibold text-[#2c2e5f]">
             Profile Information
@@ -62,13 +61,12 @@ export default function AdminSettings() {
             </div>
           </div>
         </section>
-
+=
         <section className="space-y-6">
           <h2 className="text-lg font-semibold text-[#2c2e5f]">
             Change Password
           </h2>
 
-     
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-[#2c2e5f] mb-2">
@@ -111,6 +109,7 @@ export default function AdminSettings() {
           </div>
         </section>
 
+        {/* Action Buttons */}
         <div className="flex justify-end gap-4">
           <button
             type="button"

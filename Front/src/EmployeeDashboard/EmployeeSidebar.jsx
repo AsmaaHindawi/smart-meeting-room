@@ -17,8 +17,8 @@ const EmployeeSidebar = () => {
   const navItems = [
     { name: "Dashboard", icon: <FaTachometerAlt />, path: "/employee/dashboard" },
     { name: "Book Meeting", icon: <FaCalendarAlt />, path: "/employee/book" },
-    { name: "Join Meeting", icon: <FaVideo />, path: "/employee/join" },
     { name: "Minutes", icon: <FaFileAlt />, path: "/employee/minutes" },
+        { name: "Setting", icon: <FaFileAlt />, path: "/employee/settings" },
   ];
 
   const logout = () => {

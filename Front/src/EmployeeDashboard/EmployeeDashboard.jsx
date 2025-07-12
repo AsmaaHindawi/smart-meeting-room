@@ -2,6 +2,8 @@ import { FaCalendarAlt, FaVideo, FaFileAlt } from "react-icons/fa";
 import Topbar from "./Topbar";
 import QuickActions from "./QuickActions";
 import MeetingList from "./MeetingList";
+import RoomCalendar from "./RoomCalendar";
+import NotificationPanel from "./NotificationPanel";
 
 export default function EmployeeDashboard() {
   return (
@@ -23,6 +25,16 @@ export default function EmployeeDashboard() {
             { time: "1:30 PM", title: "Budget Review", room: "Room B" },
           ]}
         />
+
+              <div className="grid md:grid-cols-2 gap-2">
+          <RoomCalendar />
+          <NotificationPanel
+            notifications={[
+              { type: "info", message: "Room C is under maintenance" },
+              { type: "reminder", message: "Meeting with HR at 3 PM" },
+            ]}
+          />
+        </div>
 </main>
 
 </div>  );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaCalendarAlt, FaVideo, FaFileAlt } from "react-icons/fa";
-import ScheduleMeetingModal from "./ScheduleMeetingModal";
+import ScheduleMeetingModal from "./ScheduleMeetingForm";
 
 const QuickActions = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,13 +18,7 @@ const QuickActions = () => {
         <FaCalendarAlt />
         <span>Schedule Meeting</span>
       </button>
-      <a
-        href="/meeting/active"
-        className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition"
-      >
-        <FaVideo />
-        <span>Join Now</span>
-      </a>
+   
       <a
         href="/MinutesPage"
         className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition"
