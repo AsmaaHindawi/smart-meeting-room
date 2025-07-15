@@ -12,6 +12,7 @@ import BookMeeting from './AdminDashboard/BookMeeting';
 import MinutesPage from './AdminDashboard/MinutesPage';
 import AdminSettings from "./AdminDashboard/AdminSetting";
 import { MinutesEditor } from "./AdminDashboard/MinutesEditor";
+import AddUsers from "./AdminDashboard/AddUsers";
 // Employee
 import EmployeeLayout from "./EmployeeDashboard/EmployeeLayout";
 import EmployeeDashboard from "./EmployeeDashboard/EmployeeDashboard";
@@ -40,8 +41,10 @@ function App() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/manageRooms" element={<ManageRooms />} />
           <Route path="/admin/bookMeeting" element={<BookMeeting />} />
-            <Route path="/admin/settingsPage" element={<AdminSettings />} />
-              <Route path="/admin/minutes" element={<MinutesEditor />} />
+          <Route path="/admin/settingsPage" element={<AdminSettings />} />
+          <Route path="/admin/minutes" element={<MinutesEditor />} />
+          <Route path="/admin/addUsers" element={<AddUsers />} />
+
         </Route>
 
         {/* Employee Routes */}

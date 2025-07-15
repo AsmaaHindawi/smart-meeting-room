@@ -92,16 +92,15 @@ export const MinutesEditor = () => {
 
   return (
     <div className="min-h-screen bg-[#f9fafb]">
-      <div className="mx-auto max-w-5xl bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col h-full">
-        {/* Header */}
-        <div className="px-7 py-5 text-[#2c2e5f]">
-          <h1 className="text-3xl font-bold">Minutes of Meeting</h1>
-          <p className="text-sm opacity-80">Document your meeting with clarity and structure</p>
+      <div className="mx-auto max-w-6xl bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col h-full">
+    
+        <div className="px-7 py-7 ">
+          <h1 className="text-2xl font-bold text-indigo-700 border-b pb-4">Minutes of Meeting</h1>
         </div>
 
-        {/* Body */}
+    
         <div className="flex-grow px-7 py-5 space-y-6 overflow-y-auto">
-          {/* Agenda */}
+    
           <div>
             <label className="block text-[#2c2e5f] font-semibold mb-1">Agenda Items</label>
             <textarea
@@ -112,7 +111,6 @@ export const MinutesEditor = () => {
             />
           </div>
 
-          {/* Decisions */}
           <div>
             <label className="block text-[#2c2e5f] font-semibold mb-1">Discussion & Decisions</label>
             <textarea
@@ -122,8 +120,6 @@ export const MinutesEditor = () => {
               className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#65c7e0] text-[#2c2e5f]"
             />
           </div>
-
-          {/* Attendees */}
           <div>
             <label className="block text-[#2c2e5f] font-semibold mb-1">Select Attendees</label>
             <Select
@@ -163,7 +159,6 @@ export const MinutesEditor = () => {
             />
           </div>
 
-          {/* File Upload */}
           <div>
             <label className="block text-[#2c2e5f] font-semibold mb-1">Attachments (optional)</label>
             <input
@@ -173,11 +168,11 @@ export const MinutesEditor = () => {
             />
           </div>
 
-          {/* Error */}
+      
           {error && <p className="text-red-600 text-sm">{error}</p>}
         </div>
 
-        {/* Footer Buttons */}
+   
         <div className="flex justify-between items-center bg-gray-50 px-8 py-4 border-t">
           <p className="text-sm text-[#2c2e5f]">{status}</p>
           <div className="flex flex-wrap gap-4">

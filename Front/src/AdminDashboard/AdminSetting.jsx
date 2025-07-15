@@ -24,7 +24,7 @@ export default function AdminSettings() {
         onSubmit={handleSubmit}
         className="w-full max-w-7xl bg-white rounded-2xl shadow-xl p-10 space-y-10"
       >
-        <h1 className="text-2xl font-bold text-[#2c2e5f] border-b pb-4">
+        <h1 className="text-2xl font-bold text-indigo-700 border-b pb-4">
           Admin Settings
         </h1>
 

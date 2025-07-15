@@ -7,7 +7,10 @@ import {
   FaFileAlt,
   FaCog,
   FaSignOutAlt,
+  FaUserPlus,
+  FaUsersCog
 } from "react-icons/fa";
+
 import AdminSettings from "./AdminSetting";
 const Sidebar = () => {
   const location = useLocation();
@@ -19,7 +22,9 @@ const Sidebar = () => {
     { name: "Manage Rooms", icon: <FaDoorOpen />, path: "/admin/manageRooms" },
     { name: "Bookings", icon: <FaCalendarAlt />, path: "/admin/bookMeeting" },
     { name: "Minutes", icon: <FaFileAlt />, path: "/admin/minutes" },
-    { name: "Setting", icon: <FaFileAlt />, path: "/admin/settingsPage" },
+  { name: "Add Users", icon: <FaUserPlus />, path: "/admin/addUsers" },
+  { name: "Settings", icon: <FaCog />, path: "/admin/settingsPage" },
+
   ];
 
   const handleLogout = () => {
